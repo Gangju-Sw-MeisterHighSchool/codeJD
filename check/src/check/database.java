@@ -17,7 +17,7 @@ import com.mysql.*;
 
 class database {
 		public static void main(String[] args) {
-			Connection conn = null;                                        // null로 초기화 한다.
+			Connection conn = null;                         
 
 			PreparedStatement pstmt = null;
 
@@ -26,22 +26,22 @@ class database {
 			DriverManager out;
 			try{
 
-			String url = "jdbc:mysql://localhost:3306/code";        // 사용하려는 데이터베이스명을 포함한 URL 기술
+			String url = "jdbc:mysql://localhost:3306/code";
 
-			String id = "root";                                                    // 사용자 계정
+			String id = "root";                            
 
-			String pw = "123456";                                                // 사용자 계정의 패스워드
+			String pw = "123456";                          
 			
-			Class.forName("com.mysql.jdbc.Driver");                       // 데이터베이스와 연동하기 위해 DriverManager에 등록한다.
+			Class.forName("com.mysql.jdbc.Driver");        
 
-			conn=DriverManager.getConnection(url,id,pw);              // DriverManager 객체로부터 Connection 객체를 얻어온다.
+			conn=DriverManager.getConnection(url,id,pw);   
 			
-			String sql = "insert into pushCode values(?,?,?,?)";        // sql 쿼리
+			String sql = "insert into pushCode values(?,?,?,?)";      
 
-			pstmt = conn.prepareStatement(sql);                          // prepareStatement에서 해당 sql을 미리 컴파일한다.
+			pstmt = conn.prepareStatement(sql);                       
 
 			pstmt.setInt(1,456);
-			pstmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));    // 현재 날짜와 시간
+			pstmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));   
 			pstmt.setString(3,"passasdfasdfdasfdsfasdfwd");
 
 			pstmt.setInt(4,132);
@@ -52,7 +52,7 @@ class database {
 			//
 			String sql1= "select * from pushCode where name = 456";                        // sql 쿼리
 
-			pstmt = conn.prepareStatement(sql1);                          // prepareStatement에서 해당 sql을 미리 컴파일한다.
+			pstmt = conn.prepareStatement(sql1);            
 
 //			pstmt.setInt(1,456);
 
@@ -64,7 +64,7 @@ class database {
 
 			
 			
-			DriverManager.println("member 테이블에 새로운 레코드를 추가했습니다.");        // 성공시 메시지 출력
+			DriverManager.println("member 테이블에 새로운 레코드를 추가했습니다.");
 
 			
 
