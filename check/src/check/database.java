@@ -42,19 +42,14 @@ class database {
 
 			pstmt.setInt(1,456);
 			pstmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));   
-			pstmt.setString(3,"passasdfasdfdasfdsfasdfwd");
+			pstmt.setString(3,"las");
 
 			pstmt.setInt(4,132);
 
 			pstmt.executeUpdate();                                        // 쿼리를 실행한다.
-			
-			
-			//
 			String sql1= "select * from pushCode where name = 456";                        // sql 쿼리
 
 			pstmt = conn.prepareStatement(sql1);            
-
-//			pstmt.setInt(1,456);
 
 
 
@@ -64,7 +59,7 @@ class database {
 
 			
 			
-			DriverManager.println("member 테이블에 새로운 레코드를 추가했습니다.");
+			DriverManager.println("add 0");
 
 			
 
@@ -72,7 +67,7 @@ class database {
 
 			e.printStackTrace();
 
-			DriverManager.println("member 테이블에 새로운 레코드 추가에 실패했습니다.");
+			DriverManager.println("addx");
 
 			}finally{                                                            // 쿼리가 성공 또는 실패에 상관없이 사용한 자원을 해제 한다. (순서중요)
 
@@ -82,19 +77,8 @@ class database {
 
 			}
 
-
-
-			
-				
-				
-				
-				
-				
 		}
 
-			 
-					
-			
 		
 	}
 
