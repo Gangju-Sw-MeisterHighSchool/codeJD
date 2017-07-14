@@ -62,13 +62,13 @@ class database {
 			System.out.println(rs);
 
 
-			//출처: http://hyeonstorage.tistory.com/112 [개발이 하고 싶어요]
+			
 			
 			DriverManager.println("member 테이블에 새로운 레코드를 추가했습니다.");        // 성공시 메시지 출력
 
 			
 
-			}catch(Exception e){                                                    // 예외가 발생하면 예외 상황을 처리한다.
+			}catch(Exception e){
 
 			e.printStackTrace();
 
