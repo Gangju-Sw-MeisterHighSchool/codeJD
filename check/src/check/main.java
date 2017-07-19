@@ -23,27 +23,10 @@ public class main {
 		String pw = "123456";                          
 		Class.forName("com.mysql.jdbc.Driver");        
 		conn=DriverManager.getConnection(url,id,pw);   
-
-/*
-		String sql = "insert into pushCode values(?,?,?,?)";
-		PreparedStatement pstmt1 = conn.prepareStatement(sql);                       
-		pstmt1.setInt(1,001);
-		pstmt1.setTimestamp(2, new Timestamp(System.currentTimeMillis()));   
-		pstmt1.setString(3,"test");
-		pstmt1.setInt(4,001);
-		pstmt1.executeUpdate();	
-	*/	
-		String sql1= "select * from pushCode";
-		pstmt = conn.prepareStatement(sql1);            
-		ResultSet rs = pstmt.executeQuery();     			
-		while(rs.next()) 
-		{
-			String asd = rs.getString("souce");
-			outPutAu(asd);
-			//exeq();
-			System.out.println(asd);
-		}
-
+		
+		la(pstmt, conn);
+		
+		
 		}catch(Exception e){
 		e.printStackTrace();
 		DriverManager.println("addx");
@@ -51,12 +34,36 @@ public class main {
 		if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}            // PreparedStatement 객체 해제
 		if(conn != null) try{conn.close();}catch(SQLException sqle){}            // Connection 해제
 	}
-
-		
-		
 	}
+	static void la(PreparedStatement pstmt, Connection conn, String srt1, String srt2) throws SQLException, IOException {
+		String sql1= "select * from pushCode where ? = ?";
+		pstmt = conn.prepareStatement(sql1);
+		pstmt.setString(1, srt1);
+		pstmt.setString(2, srt2);
+		ResultSet rs = pstmt.executeQuery();     			
+		while(rs.next()) 
+		{
+			String asd = rs.getString("souce");
+			outPutAu(asd);
+			exeq();
+			System.out.println(asd);
+		}
+		}
+	static void la(PreparedStatement pstmt, Connection conn) throws SQLException, IOException {
+		String sql1= "select * from pushCode";
+		pstmt = conn.prepareStatement(sql1);
+		ResultSet rs = pstmt.executeQuery();     			
+		while(rs.next()) 
+		{
+			String asd = rs.getString("souce");
+			outPutAu(asd);
+			exeq();
+			System.out.println(asd);
+		}
+		}
 	static void outPutAu(String str) throws IOException
 	{
+		
 		PrintWriter pw = new PrintWriter(new FileWriter("C:/Users/user/Desktop/시스템/play.c"));
 		pw.println(str);
 		pw.close();
@@ -75,6 +82,5 @@ public class main {
 		//String command = "C:/Users/user/Desktop/out555.bat";
 		Runtime ru = Runtime.getRuntime();
 		Process p=ru.exec(command);
-	}
-	
+	}	
 }
